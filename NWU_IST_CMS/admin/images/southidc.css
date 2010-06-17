@@ -1,0 +1,63 @@
+.back_southidc {
+	BACKGROUND-IMAGE: url(../image/titlebg.gif); COLOR: #000000
+}
+.loginbg {
+	BACKGROUND-POSITION: center center; BACKGROUND-IMAGE: url(../icon/login.gif); BACKGROUND-REPEAT: no-repeat
+}
+.bgda {
+	FONT-SIZE: 18px; COLOR: #ff6600; FONT-FAMILY: "黑体"
+}
+.bgxiaohui {
+	COLOR: #41748f
+}
+.input1 {
+	BORDER-RIGHT: #81bfde 1px solid; BORDER-TOP: #81bfde 1px solid; FONT-WEIGHT: bold; BORDER-LEFT: #81bfde 1px solid; WIDTH: 130px; COLOR: #087aab; TEXT-INDENT: 3px; BORDER-BOTTOM: #81bfde 1px solid; FONT-FAMILY: Geneva, Arial, Helvetica, sans-serif; LETTER-SPACING: 1px; HEIGHT: 20px
+}
+.input12 {
+	BORDER-RIGHT: #81bfde 1px solid; BACKGROUND-POSITION: right center; BORDER-TOP: #81bfde 1px solid; FONT-WEIGHT: bold; BACKGROUND-IMAGE: url(../../Images/undo.gif); BORDER-LEFT: #81bfde 1px solid; WIDTH: 150px; TEXT-INDENT: 4px; BORDER-BOTTOM: #81bfde 1px solid; BACKGROUND-REPEAT: no-repeat; FONT-FAMILY: Geneva, Arial, Helvetica, sans-serif; LETTER-SPACING: 1px; HEIGHT: 20px
+}
+.imput0 {
+	BORDER-RIGHT: #ffffff 0px solid; BORDER-TOP: #ffffff 0px solid; BORDER-LEFT: #ffffff 0px solid; BORDER-BOTTOM: #ffffff 0px solid
+}
+.red {
+	FONT-WEIGHT: normal; FONT-SIZE: 14px; COLOR: #ff6600; FONT-FAMILY: Geneva, Arial, Helvetica, sans-serif
+}
+.table_southidc {
+	BACKGROUND-COLOR: #a4b6d7
+}
+.td_southidc {
+	BACKGROUND-COLOR: #f2f8ff
+}
+.tr_southidc {
+	BACKGROUND-COLOR: #ecf5ff
+}
+.t1 {
+	FONT: 12px 宋体; COLOR: #000000
+}
+.t2 {
+	FONT: 12px 宋体; COLOR: #ffffff
+}
+.t3 {
+	FONT: 12px 宋体; COLOR: #ffff00
+}
+.t4 {
+	FONT: 12px 宋体; COLOR: #800000
+}
+.t5 {
+	FONT: 12px 宋体; COLOR: #191970
+}
+.weiqun:hover {
+	COLOR: #ffffff; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #cccccc; TEXT-DECORATION: underline; Font-unline: yes
+}
+TD {
+	FONT-SIZE: 12px
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}

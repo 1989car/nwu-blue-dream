@@ -1,0 +1,38 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD><TITLE>{$newscontent.title}_{$sitename}</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content="{$newscontent.keyword},{$newscontent.title}" name=keywords>
+<META content="{$newscontent.title},{$sitename}" name=description>
+<LINK href="images/default.css" type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2900.3640" name=GENERATOR>
+</HEAD>
+
+<BODY>
+{include file="$skin/header.htm"}
+<DIV class="width mag_t clear"><!--left begin-->
+<DIV class="left c_left">
+<DIV class=width_l_view mag_t>
+<DIV class=sub_i_bg01>导航：{$newsnav}</DIV>
+<DIV class=sub_i_b01>
+<DIV class=notice_title>{$newscontent.title}</DIV>
+<DIV class=notice_info>作者：
+{if $newscontent.author eq ""}
+	未知
+{else}
+	{$newscontent.author}
+{/if}
+ 日期：{$newscontent.addtime|date_format:"%Y-%m-%d %H:%M:%S"} 点击数：
+ <script language="javascript" type="text/javascript" src="artclick.php?id={$smarty.get.id}"></script>
+ </DIV>
+<DIV class=content_page>
+<DIV id=mtext>
+{$newscontent.content}
+</DIV></DIV>
+
+<DIV align=right>上一篇：{$prevnews} 下一篇：{$nextnews}</DIV>
+<DIV class=clear></DIV></DIV></DIV></DIV><!--left over--><!--right begin-->
+
+</DIV><!--right over--></DIV></DIV>
+{include file="default/footer.htm"}
+</BODY></HTML>

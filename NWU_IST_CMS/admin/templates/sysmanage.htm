@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="images/admin.css" type="text/css" rel="stylesheet">
+</HEAD>
+
+<BODY>
+<div id="yfweb">
+<table width="100%" height="100%" cellspacing="0" cellpadding="0" align="center" class="yfweb">
+{if $tp eq "addconfig"}
+<form action="?action=addconfig" method="post">
+	<tr class="firstr">
+	 <td colspan="2">
+	 <span class="title">增加系统配置</span></td>
+	</tr>
+	<tr>
+		<td width="20%">配置名</td>
+		<td><input type="text" size=30 name="name" value="" /></td>
+	</tr>
+	<tr>
+		<td>配置值</td>
+		<td><input type="text" size=30 name="value" value="" /></td>
+	</tr>
+<tr><td colspan="2">配置名必须符合php命名变量规则 不允许纯数字</td></tr>
+   	<tr>
+		<td>&nbsp;</td>
+		<td><input  type="submit" name="Submit" id="Submit" value="提 交"  class="mini" />
+		  <input  type="reset" name="Submit" id="Submit" value="重 写"  class="mini" /></td>
+	</tr>
+
+</form>
+
+{elseif  $tp eq "changeskin"}
+	<tr class="firstr">
+	 <td>
+	 <span class="title">一键换肤</span> </td>
+	</tr>
+{section name="list" loop="$skins"}
+{if  $skins[list] neq "." and   $skins[list] neq ".."}
+<form action="?action=changeskin&skin={$skins[list]}" method="post">
+	<tr>
+	 <td><input type=submit name=sub value=切换到该皮肤>   <img src=../images/{$skins[list]}.jpg width=120 height=120>{$skins[list]}  </td>
+	</tr>
+</form>
+{/if}
+{/section}
+<tr>
+  <td><font color="red">*</font> 皮肤文件位于templates目录下，每个文件夹是一个皮肤，系统会自动检测到新放入的皮肤文件夹</td></tr>
+{else}
+	<tr class="firstr">
+	 <td>
+	 <span class="title">系统配置列表</span>  <a href="?tp=addconfig">添加配置</a>&nbsp;&nbsp;&nbsp;<a href="?action=genconfig">生成配置文件</a></td>
+	</tr>
+{section name="list" loop="$sysconfiglist"}
+<form action="?action=editconfig&id={$sysconfiglist[list].id}" method="post" name="form{$sysconfiglist[list].id}">
+	<tr>
+	 <td>{$sysconfiglist[list].id}&nbsp;&nbsp;&nbsp;配置名&nbsp;&nbsp;&nbsp;<input type="text" size=30 name="name" value="{$sysconfiglist[list].name}" {if  $sysconfiglist[list].name eq "host" or $sysconfiglist[list].name eq "user" or $sysconfiglist[list].name eq "pass" or $sysconfiglist[list].name eq "dbname" or $sysconfiglist[list].name eq "pre" or $sysconfiglist[list].name eq "PRE_PASS" or $sysconfiglist[list].name eq "sitename" or $sysconfiglist[list].name eq "skin"} readonly style="background-color:bisque"{/if}/> &nbsp;&nbsp;&nbsp;配置值&nbsp;&nbsp;&nbsp; <input type="text" size=30 name="value" value="{$sysconfiglist[list].value}"/>&nbsp;&nbsp;&nbsp;<input  type="submit" name="Submit" id="Submit" value="修 改"  class="mini" />&nbsp;&nbsp;&nbsp;<input  type="button" name="button" value="删 除"  class="mini" onClick="window.location.href='?action=delconfig&id={$sysconfiglist[list].id}'"/></td>
+	</tr>
+</form>
+{/section}
+<tr>
+  <td><font color="red">*</font> skin之前的配置名为系统保留 不允许修改  <font color="red">*</font> 配置名必须符合php命名变量规则 不允许纯数字</td></tr>
+{/if}
+</table>
+</div>
+{include file="bottom.htm"}
+</BODY></HTML>

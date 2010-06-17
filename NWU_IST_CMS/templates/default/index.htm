@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD><TITLE>{$sitename}</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<META content= name=keywords>
+<META content= name=description>
+<LINK href="images/default.css" type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2900.3640" name=GENERATOR>
+</HEAD>
+
+<BODY>
+{include file="$skin/header.htm"}
+<DIV class="width mag_t clear"><!--left begin-->
+<DIV class="left c_left"><!--图文信息栏目开始-->
+
+<!--自定义栏目整行A开始-->
+<DIV class="width_l mag_t">
+{section name="list" loop="$classnewslist"}
+{if $classnewslist[list].key % 2 eq 0}
+<!--自定义栏目一开始-->
+<DIV class=left id=sub_width>
+<DIV class=sub_i_bg01><SPAN><A
+href="list.php?cid={$classnewslist[list].id}">更多&gt;&gt;</A></SPAN>{$classnewslist[list].name}</DIV>
+<DIV class=sub_i_b01>
+<UL id=info>
+{foreach key=key item=item from=$classnewslist[list].news}
+  <LI><SPAN>{$item.addtime|date_format:"%m-%d"}</SPAN><A title={$item.title}  href="view.php?id={$item.id}" target=_blank>{cnsubstr str=$item.title start="0" len="36"}</A></LI>
+{/foreach}
+</UL></DIV></DIV>
+<!--自定义栏目一结束-->
+{else}
+<!--自定义栏目二开始-->
+<DIV class="left mag_l" id=sub_width>
+<DIV class=sub_i_bg01><SPAN><A
+href="list.php?cid={$classnewslist[list].id}">更多&gt;&gt;</A></SPAN>{$classnewslist[list].name}</DIV>
+<DIV class=sub_i_b01>
+<UL id=info>
+{foreach key=key item=item from=$classnewslist[list].news}
+  <LI><SPAN>{$item.addtime|date_format:"%m-%d"}</SPAN><A title={$item.title}  href="view.php?id={$item.id}" target=_blank>{cnsubstr str=$item.title start="0" len="36"}</A></LI>
+{/foreach}
+</UL></DIV></DIV>
+<!--自定义栏目二结束-->
+{/if}
+{/section}
+
+</DIV><!--自定义栏目整行A结束--></DIV>
+<!--left over--><!--right begin-->
+<DIV class="left mag_l c_r">
+<DIV>
+<DIV class=sub_i_bg01><SPAN><A
+href="list.php">更多&gt;&gt;</A></SPAN>热门新闻</DIV>
+<DIV class="sub_i_b01 clear">
+<UL id=vote>
+{section name="list" loop="$hotlist"}
+  <LI><A title={$hotlist[list].title}  href="view.php?id={$hotlist[list].id}">{cnsubstr str=$hotlist[list].title start="0" len="13"}</A></LI>
+{/section}</UL></DIV></DIV>
+<DIV class=mag_t>
+<DIV class=sub_i_bg01><SPAN><A
+href="list.php">更多&gt;&gt;</A></SPAN>最新新闻</DIV>
+<DIV class="sub_i_b01 clear">
+<UL id=vote>
+{section name="list" loop="$newlist"}
+  <LI><A title={$newlist[list].title}  href="view.php?id={$newlist[list].id}">{cnsubstr str=$newlist[list].title start="0" len="13"}</A></LI>
+{/section}
+</UL></DIV></DIV></DIV><!--right over--></DIV>
+{include file="$skin/footer.htm"}
+</BODY></HTML>
