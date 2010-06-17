@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="images/admin.css" type="text/css" rel="stylesheet">
+</HEAD>
+
+<BODY>
+<div id="yfweb">
+<table width="100%" height="100%" cellspacing="0" cellpadding="0" align="center" class="yfweb">
+	<tr class="firstr">
+	 <td colspan="6">新闻搜索</td>
+	</tr>
+{literal}
+<script  language="javascript">
+  function  searchFun()
+  {   
+  if(document.searchform.fid.value!="0")  document.searchform.action=document.searchform.action+"&fid="+document.searchform.fid.value;
+  if(document.searchform.keyword.value!="")   document.searchform.action=document.searchform.action+"&keyword="+document.searchform.keyword.value;
+
+  document.searchform.submit();
+  }
+</script>
+{/literal}
+<form action="?tp=search" method="post" name="searchform">
+	<tr>
+		<td width="8%">关键词</td>
+		<td width="30%"><input type="text" size=20 name="keyword" value="" /></td>
+		<td width="14%">所属分类</td>
+		<td width="9%">
+		  <select name="fid" id="select">
+          <option value="0">所有分类</option>
+		    {$newsclass}
+		  </select></td>
+		<td width="30%"><input  type="submit" name="Submit2" id="Submit2" value="查找新闻"  class="mini" onClick="searchFun()"/></td>
+		<td width="25%">&nbsp;</td>
+	</tr>
+</form>
+<form name="delform" action="?action=delall" method="post">
+    <tr class="firstr">
+		<th width='8%' height="39">ID</th>
+		<th width='30%' align=left>新闻题目</th>
+		<th width='14%' align=left>类别</th>
+		<th width='9%'>点击数</th>
+		<th width='30%'>发布时间</th>
+		<th width='25%' align=center><input type="checkbox" name="selectids" value="Check All" onClick="doCheckAll(this)"></th>
+	</tr>
+	{section name="list" loop="$newslist"}
+    <tr> 
+      <td height="39"><a href=newsmanage.php?tp=edit&id={$newslist[list].id}>{$newslist[list].id}</a></td>
+      <td align=left><a href=newsmanage.php?tp=edit&id={$newslist[list].id}>{$newslist[list].title}</a></td>
+      <td align=left><a href=newsmanage.php?tp=search&fid={$newslist[list].cid}><script language='javascript' type='text/javascript' src="showclass.php?fid={$newslist[list].cid}"></script></a></td>
+      <td>{$newslist[list].clicks}</td>
+      <td>{$newslist[list].addtime|date_format:"%Y-%m-%d %H:%M:%S"}
+</td>
+      <td align=center><a href=newsmanage.php?action=del&id={$newslist[list].id}>删除</a><input name="id[]" type="checkbox" value="{$newslist[list].id}"></td>
+    </tr> 
+     {/section}
+      <tr>
+		<td colspan="5" align=center>{$pagelist}</td>
+		<td align=center><input type="submit" name="Submit" value="删 除" onClick="return test();"></td>
+	  </tr>
+</form>
+</table>
+</div>
+{include file="bottom.htm"}
+</BODY></HTML>
+{literal}
+<script>
+function del()
+{
+  if(!confirm('确认删除吗？')) return false;
+}
+</script>
+<script language=javascript>
+function doCheckAll(obj)
+{
+	var form = obj.form;
+	for (var i=0;i<form.elements.length;i++){
+		var e = form.elements[i];
+		e.checked = obj.checked;
+}
+}
+</script>
+{/literal}

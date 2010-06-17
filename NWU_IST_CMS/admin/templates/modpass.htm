@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=utf-8">
+<LINK href="images/admin.css" type="text/css" rel="stylesheet">
+</HEAD>
+
+<BODY>
+<div id="yfweb">
+<table width="100%" height="100%" cellspacing="0" cellpadding="0" align="center" class="yfweb">
+{if $tp eq "modpass"}
+<form action="?action=modpass&id={$id}" method="post">
+	<tr class="firstr">
+	 <td colspan="2">
+	 <span class="title">修改用户资料</span></td>
+	</tr>
+	<tr>
+		<td width="20%">用户名</td>
+		<td><input type="text" size=30 name="name" value="{$user}"  readonly/></td>
+	</tr>
+	<tr>
+		<td>原密码</td>
+		<td><input type="password" size=30 name="pass" value="" /></td>
+	</tr>
+	<tr>
+		<td>新密码</td>
+		<td><input type="password" size=30 name="newpass" value="" /></td>
+	</tr>
+	<tr>
+		<td>重复新密码</td>
+		<td><input type="password" size=30 name="renewpass" value="" /></td>
+	</tr>   
+    	<tr>
+		<td>&nbsp;</td>
+		<td><input  type="submit" name="Submit" id="Submit" value="提 交"  class="mini" /> 
+		  <input  type="reset" name="Submit" id="Submit" value="重 写"  class="mini" /></td>
+	</tr> 
+</form>
+{elseif  $tp eq "useradd"}
+<form action="?action=useradd" method="post">
+	<tr class="firstr">
+	<td>
+	 <span class="title">用户添加</span></td>
+	</tr>
+	<tr>
+		<td width="20%">用户名 <input type="text" size=30 name="name" value=""/></td>
+	</tr>
+	<tr>
+		<td>密&nbsp;&nbsp;&nbsp;码 <input type="text" size=30 name="pass" value="" /></td>
+	</tr>
+    <tr>
+		<td><input  type="submit" name="Submit" id="Submit" value="提 交"  class="mini" /> 
+		  <input  type="reset" name="Submit" id="Submit" value="重 写"  class="mini" /></td>
+	</tr> 
+</form>
+{else}
+	<tr class="firstr">
+	 <td>
+	 <span class="title">用户列表</span>  <a href=?tp=useradd>添加用户</a></td>
+	</tr>
+	<tr>
+	 <td>ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;修改&nbsp;&nbsp; 删除</td>
+	</tr>
+{section name="list" loop="$userslist"}
+	<tr>
+	 <td>{$userslist[list].id}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$userslist[list].name} &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;<a href="?tp=modpass&id={$userslist[list].id}">修改</a>&nbsp;&nbsp; <a href="?action=userdel&id={$userslist[list].id}">删除</a></td>
+	</tr>
+{/section}
+{/if}
+</table>
+</div>
+{include file="bottom.htm"}
+</BODY></HTML>
