@@ -1,0 +1,8 @@
+数据库名 istcms
+
+数据库帐号 root
+数据库密码 mysql
+
+ucenter密码 istcms
+
+supesite 帐号 nwuist  密码相同
