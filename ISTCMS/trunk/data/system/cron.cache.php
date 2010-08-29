@@ -2,6 +2,6 @@
 
 if(!defined('IN_SUPESITE')) exit('Access Denied');
 
-$_SGLOBAL['cronnextrun']=1283071500;
+$_SGLOBAL['cronnextrun']=1283076900;
 
 ?>
