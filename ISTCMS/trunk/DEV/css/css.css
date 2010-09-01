@@ -15,12 +15,12 @@ img{border:0}
 #head6 { width:1100px; height:33px; background:url(../images/head6.jpg) no-repeat scroll 0 0;}
 #head6 ul { margin-left:80px;}
 #head6 ul li {font-family:"雅黑"; font-size:16px; font-weight:bold; float:left; padding:0 10px;}
-#head6 ul li a:hover {color:#FFF; font-weight:bolder;text-decoration:underline;font-size:16px;}
+#head6 ul li a:hover {color:#FFF; font-weight:bolder;text-decoration:underline;}
 
 
 body { background-color:#FFF;}
 
-#logo img { position:absolute; top:40px; left:240px;}
+#logo img { position:absolute; top:40px; left:140px;}
 
 /*#nav { width:1100px; height:56px; background:url(../images/nav.jpg) no-repeat scroll 0 0; margin-bottom:10px; margin:auto;}*/
 
