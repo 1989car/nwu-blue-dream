@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=$_SC[charset]" />
-<title>$title $_SCONFIG[seotitle] - Powered by SupeSite</title>
+<title>$title $_SCONFIG[seotitle]</title>
 <meta name="keywords" content="$keywords $_SCONFIG[seokeywords]" />
 <meta name="description" content="$description $_SCONFIG[seodescription]" />
 <meta name="generator" content="Blue Dreamz " />
@@ -35,7 +35,7 @@ var siteUrl = "{S_URL}";
 				<div id="head5"></div>
 				<div id="head6">
 					<ul>
-						<li class="current"><a href="{S_URL}/">Ê×Ò³</a></li>
+						<li><a href="{S_URL}/">Ê×Ò³</a></li>
 						<!--{loop $channels['menus'] $key $value}-->
 						<li><a href="$value[url]">$value[name]</a></li>
 						<!--{/loop}-->
