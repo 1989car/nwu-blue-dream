@@ -13,7 +13,7 @@ img{border:0}
 #head4 { width:1100px; height:33px; background:url(../images/head4.jpg) no-repeat scroll 0 0;}
 #head5 { width:1100px; height:34px; background:url(../images/head5.jpg) no-repeat scroll 0 0;}
 #head6 { width:1100px; height:33px; background:url(../images/head6.jpg) no-repeat scroll 0 0;}
-#head6 ul { margin-left:80px;}
+#head6 ul {font-family:"雅黑"; font-size:14px; margin-left:80px;}
 #head6 ul li {font-family:"雅黑"; font-size:14px; font-weight:bold; float:left; padding:0px 10px;}
 #head6 ul li a:hover {color:#FFF; font-weight:bolder;text-decoration:underline;}
 
@@ -58,7 +58,7 @@ body { background-color:#FFF;}
 
 #nav ul li { font-size:25px; font-weight:normal; line-height:22px;padding:10px 10px;}
 
-#nav ul li a { font-size:20px; font-weight:bolder; line-height:22px; color:#c0c0c0; width:100px; cursor:pointer;}
+#nav ul li a { font-size:20px; font-weight:bolder; line-height:22px; color:#ddd; width:100px; cursor:pointer;}
 
 #nav ul li a:hover { color:#000000; position:relative;  cursor:pointer;}
 
