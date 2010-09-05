@@ -54,7 +54,7 @@ body { background-color:#FFF;}
 
 #nav { width:192px; height:487px; background:url(../images/nav_bg.png) no-repeat scroll 0 0; float:right; position:relative; top:2px; left:-35px;}
 
-#nav ul { font-size:25px; font-weight:bold; margin:40px 0px 0px 42px;  text-align:center;}
+#nav ul { font-size:25px; font-weight:bold; margin:48px 0px 0px 42px;  text-align:center;}
 
 #nav ul li {list-style-type:none; font-size:25px; font-weight:normal; line-height:22px;padding:10px 10px;}
 
