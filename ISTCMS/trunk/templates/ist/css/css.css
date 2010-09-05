@@ -58,9 +58,9 @@ body { background-color:#FFF;}
 
 #nav ul li { font-size:25px; font-weight:normal; line-height:22px;padding:10px 10px;}
 
-#nav ul li a { font-size:20px; font-weight:bolder; line-height:22px; color:#333333; width:100px; cursor:pointer;}
+#nav ul li a { font-size:20px; font-weight:bolder; line-height:22px; color:#c0c0c0; width:100px; cursor:pointer;}
 
-#nav ul li a:hover { color:#808080; position:relative;  cursor:pointer;}
+#nav ul li a:hover { color:#000000; position:relative;  cursor:pointer;}
 
 #some { width:186px; height:487px; float:left; position:relative; top:30px; left:-20px;}
 
