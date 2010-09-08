@@ -620,7 +620,7 @@ CREATE TABLE `supe_crons` (
 
 /*Data for the table `supe_crons` */
 
-insert  into `supe_crons`(`cronid`,`available`,`type`,`name`,`filename`,`lastrun`,`nextrun`,`weekday`,`day`,`hour`,`minute`) values (1,1,'system','更新热门TAG','tagcontent.php',1283677212,1283680800,-1,-1,-1,'0'),(2,1,'system','清理无用附件','cleanattachment.php',1283670829,1283716800,-1,-1,4,'0'),(3,1,'system','清理临时文件','cleanimporttemp.php',1283670829,1283717700,-1,-1,4,'15'),(4,1,'system','更新论坛缓存','updatebbscache.php',1283670829,1283709600,-1,-1,2,'0'),(5,1,'system','更新信息查看数','updateviewnum.php',1283670829,1283713500,-1,-1,3,'5	15	25	35	45	55'),(6,1,'system','更新论坛帖子收录','updatebbsforums.php',1283678292,1283678400,-1,-1,-1,'0	5	10	15	20	25	30	35	40	45	50	55');
+insert  into `supe_crons`(`cronid`,`available`,`type`,`name`,`filename`,`lastrun`,`nextrun`,`weekday`,`day`,`hour`,`minute`) values (1,1,'system','更新热门TAG','tagcontent.php',1283684412,1283688000,-1,-1,-1,'0'),(2,1,'system','清理无用附件','cleanattachment.php',1283670829,1283716800,-1,-1,4,'0'),(3,1,'system','清理临时文件','cleanimporttemp.php',1283670829,1283717700,-1,-1,4,'15'),(4,1,'system','更新论坛缓存','updatebbscache.php',1283670829,1283709600,-1,-1,2,'0'),(5,1,'system','更新信息查看数','updateviewnum.php',1283670829,1283713500,-1,-1,3,'5	15	25	35	45	55'),(6,1,'system','更新论坛帖子收录','updatebbsforums.php',1283685607,1283685900,-1,-1,-1,'0	5	10	15	20	25	30	35	40	45	50	55');
 
 /*Table structure for table `supe_customfields` */
 
