@@ -4,9 +4,9 @@ import java.sql.*;
 
 public class MysqlDB {
 
-	Connection conn = null;
-	PreparedStatement pstat = null;
-	ResultSet rs = null;
+	protected Connection conn = null;
+	protected PreparedStatement pstat = null;
+	protected ResultSet rs = null;
 
 	public Connection getConn() {
 		try {
@@ -15,7 +15,7 @@ public class MysqlDB {
 			e.printStackTrace();
 			System.err.println("initialization of jdbc failed");
 		}
-		String url = "jdbc:mysql://localhost:3306/smrptest";
+		String url = "jdbc:mysql://localhost:3306/smrp";
 		String user = "root";
 		String password = "mysql";
 		try {
@@ -56,20 +56,23 @@ public class MysqlDB {
 		}
 	}
 
-	public void executeData(String sql) {
-
+	public boolean executeData(String sql) {
+		boolean flag = false;
 		try {
 			conn = this.getConn();
 			pstat = conn.prepareStatement(sql);
-			pstat.executeUpdate();
+			int i = pstat.executeUpdate();
+			if(i>0){flag = true;}
 
 		} catch (Exception e) {
 		} finally {
 			this.closeAll(conn, pstat, rs);
 		}
+		return flag;
 	}
 
 	public ResultSet queryData(String sql) {
+		rs = null;
 		try {
 			conn = this.getConn();
 			pstat = conn.prepareStatement(sql);
