@@ -5,9 +5,6 @@
 	<classpathentry kind="con" path="com.genuitec.eclipse.j2eedt.core.J2EE14_CONTAINER"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/jstl.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/standard.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dbxml/db.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dbxml/dbxml.jar"/>
-	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/dbxml/dbxmlexamples.jar"/>
 	<classpathentry kind="lib" path="WebRoot/WEB-INF/lib/mysql/mysql-connector-java-5.1.14-bin.jar"/>
 	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
 </classpath>
