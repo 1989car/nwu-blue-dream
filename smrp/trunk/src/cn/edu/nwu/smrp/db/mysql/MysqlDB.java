@@ -1,112 +1,84 @@
 package cn.edu.nwu.smrp.db.mysql;
 
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
-import java.sql.Connection;
+public class MysqlDB {
 
-/**
- * JDBC辅助类
- * 
- * @author Yellow
- * 
- */
-public final class MysqlDB {
-	private static String url = "jdbc:mysql://localhost:3306/smrp"; // 连接数据库连接
-	private static String use = "root"; // 登陆数据库用户名
-	private static String password = "mysql"; // 登陆数据库密码
+	Connection conn = null;
+	PreparedStatement pstat = null;
+	ResultSet rs = null;
 
-	private MysqlDB() {
-
-	}
-
-	/**
-	 * 使用静态模块来进行注册驱动
-	 */
-	static {
-		// 1. 注册驱动
+	public Connection getConn() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			throw new ExceptionInInitializerError(e);
-		}
-	}
-
-	/**
-	 * 建立数据库连接
-	 * 
-	 * @return 返回数据库连接
-	 * @throws SQLException
-	 */
-	public static Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(url, use, password);
-	}
-
-	/**
-	 * 释放数据资源
-	 * 
-	 * @param rs
-	 * @param st
-	 * @param conn
-	 */
-	public static void free(ResultSet rs, Statement st, Connection conn) {
-		try {
-			if (rs != null)
-				rs.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
+			System.err.println("initialization of jdbc failed");
+		}
+		String url = "jdbc:mysql://localhost:3306/smrptest";
+		String user = "root";
+		String password = "mysql";
+		try {
+			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("getConn succeed");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.err.println("getConn failed");
+		}
+		return conn;
+	}
+
+	public void closeAll(Connection conn, PreparedStatement pstat, ResultSet rs) {
+		if (rs != null) {
 			try {
-				if (st != null)
-					st.close();
-			} catch (SQLException e) {
+				rs.close();
+			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				if (conn != null)
-					try {
-						conn.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
+				System.err.println("rs关闭失败");
+			}
+		}
+		if (pstat != null) {
+			try {
+				pstat.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.err.println("pstat关闭失败");
+			}
+		}
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.err.println("conn关闭失败");
 			}
 		}
 	}
 
-	public static void ExecuteData(String sql) throws SQLException {
-		Connection conn = null;
-		Statement st = null;
-		ResultSet rs = null;
-		try {
-			// 建立连接
-			conn = MysqlDB.getConnection();
-			// 创建sql语句
-			st = conn.createStatement();
-			// 执行SQL语句
-			st.executeUpdate(sql);
+	public void executeData(String sql) {
 
+		try {
+			conn = this.getConn();
+			pstat = conn.prepareStatement(sql);
+			pstat.executeUpdate();
+
+		} catch (Exception e) {
 		} finally {
-			MysqlDB.free(rs, st, conn);
+			this.closeAll(conn, pstat, rs);
 		}
 	}
 
-	public static ResultSet QueryData(String sql) throws SQLException {
-		Connection conn = null;
-		Statement st = null;
-		ResultSet rs = null;
-
+	public ResultSet queryData(String sql) {
 		try {
-			// 建立连接
-			conn = MysqlDB.getConnection();
-			// 创建sql语句
-			st = conn.createStatement();
-			// 执行SQL语句
-			rs = st.executeQuery(sql);
-
+			conn = this.getConn();
+			pstat = conn.prepareStatement(sql);
+			pstat.executeQuery();
+		} catch (Exception e) {
 		} finally {
-			MysqlDB.free(rs, st, conn);
+			this.closeAll(conn, pstat, rs);
 		}
+
 		return rs;
 	}
 }
