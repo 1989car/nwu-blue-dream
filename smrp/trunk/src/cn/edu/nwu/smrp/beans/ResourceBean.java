@@ -12,6 +12,7 @@ package cn.edu.nwu.smrp.beans;
 
 public class ResourceBean {
 	private int resource_id;
+	private String resource_name;
 	private String resource_object;
 	private String resource_phase;
 	private String resource_type;
@@ -23,6 +24,14 @@ public class ResourceBean {
 
 	public int getResource_id() {
 		return resource_id;
+	}
+
+	public String getResource_name() {
+		return resource_name;
+	}
+
+	public void setResource_name(String resourceName) {
+		resource_name = resourceName;
 	}
 
 	public void setResource_id(int resourceId) {
