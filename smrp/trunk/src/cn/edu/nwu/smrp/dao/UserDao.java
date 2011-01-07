@@ -3,10 +3,10 @@ package cn.edu.nwu.smrp.dao;
 import java.util.ArrayList;
 
 import cn.edu.nwu.smrp.beans.UserBean;
-import cn.edu.nwu.smrp.db.mysql.MysqlDB;
+import cn.edu.nwu.smrp.db.MysqlDB;
 
 public class UserDao extends MysqlDB {
-	// Ìí¼ÓÓÃ»§
+	// ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	public boolean UserAdd(UserBean user) {
 		String sql = "INSERT INTO user(user_name,user_pwd,user_email,user_phone,user_addr) VALUES("
 				+ user.getUser_name()
@@ -17,13 +17,13 @@ public class UserDao extends MysqlDB {
 		return executeData(sql);
 	}
 
-	// É¾³ýÓÃ»§
+	// É¾ï¿½ï¿½ï¿½Ã»ï¿½
 	public boolean UserDelete(int user_id) {
 		String sql = "DELETE FROM user WHERE user_id=" + user_id + ";";
 		return executeData(sql);
 	}
 
-	// ÓÃ»§µÇÂ¼
+	// ï¿½Ã»ï¿½ï¿½ï¿½Â¼
 	public UserBean UserLogin(UserBean user) {
 		UserBean user_temp = null;
 
@@ -51,7 +51,7 @@ public class UserDao extends MysqlDB {
 		return user_temp;
 	}
 
-	// ÓÃ»§×ÊÁÏ¸üÐÂ
+	// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½
 	public boolean UserUpdate(UserBean user) {
 		String sql = "UPDATE user SET user_pwd=" + user.getUser_pwd()
 				+ ",user_email=" + user.getUser_email() + ",user_level="
@@ -62,7 +62,7 @@ public class UserDao extends MysqlDB {
 		return executeData(sql);
 	}
 
-	// ²éÑ¯Ö¸¶¨IDÓÃ»§µÄ¸öÈËÐÅÏ¢
+	// ï¿½ï¿½Ñ¯Ö¸ï¿½ï¿½IDï¿½Ã»ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public UserBean UserInfo(int user_id) {
 		rs = null;
 
@@ -88,7 +88,7 @@ public class UserDao extends MysqlDB {
 		return user_temp;
 	}
 
-	// ²éÑ¯ËùÓÐÓÃ»§
+	// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
 	public ArrayList UserAll() {
 		String sql = "SELECT * FROM user;";
 		rs = queryData(sql);
