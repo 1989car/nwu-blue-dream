@@ -1,4 +1,4 @@
-package cn.edu.nwu.smrp.db.mysql;
+package cn.edu.nwu.smrp.db;
 
 import java.sql.*;
 
@@ -35,7 +35,7 @@ public class MysqlDB {
 				rs.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.err.println("rs¹Ø±ÕÊ§°Ü");
+				System.err.println("rsï¿½Ø±ï¿½Ê§ï¿½ï¿½");
 			}
 		}
 		if (pstat != null) {
@@ -43,7 +43,7 @@ public class MysqlDB {
 				pstat.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.err.println("pstat¹Ø±ÕÊ§°Ü");
+				System.err.println("pstatï¿½Ø±ï¿½Ê§ï¿½ï¿½");
 			}
 		}
 		if (conn != null) {
@@ -51,7 +51,7 @@ public class MysqlDB {
 				conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.err.println("conn¹Ø±ÕÊ§°Ü");
+				System.err.println("connï¿½Ø±ï¿½Ê§ï¿½ï¿½");
 			}
 		}
 	}

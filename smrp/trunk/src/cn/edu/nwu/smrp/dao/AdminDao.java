@@ -3,10 +3,10 @@ package cn.edu.nwu.smrp.dao;
 import java.util.ArrayList;
 
 import cn.edu.nwu.smrp.beans.AdminBean;
-import cn.edu.nwu.smrp.db.mysql.MysqlDB;
+import cn.edu.nwu.smrp.db.MysqlDB;
 
 public class AdminDao extends MysqlDB {
-	// Ìí¼Ó¹ÜÀíÔ±
+	// ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½Ô±
 	public boolean AdminAdd(AdminBean admin) {
 		String sql = "INSERT INTO admin(admin_name,admin_pwd,admin_email,admin_level) VALUES("
 				+ admin.getAdmin_name()
@@ -17,14 +17,14 @@ public class AdminDao extends MysqlDB {
 		return executeData(sql);
 	}
 
-	// É¾³ı¹ÜÀíÔ±
+	// É¾ï¿½ï¿½ï¿½ï¿½ï¿½Ô±
 	public boolean AdminDelete(int admin_id) {
 		String sql = "DELETE FROM admin WHERE admin_id=" + admin_id + ";";
 
 		return executeData(sql);
 	}
 	
-	// ¹ÜÀíÔ±µÇÂ¼
+	// ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½Â¼
 	public AdminBean AdminLogin(AdminBean admin) {
 		
 		String sql = "SELETE * FROM admin WHERE admin_name="+admin.getAdmin_name()+" and admin_pwd="+admin.getAdmin_pwd()+";";
@@ -47,13 +47,13 @@ public class AdminDao extends MysqlDB {
 		return admin_temp;
 	}
 	
-	// ¹ÜÀíÔ±×ÊÁÏ¸üĞÂ
+	// ï¿½ï¿½ï¿½ï¿½Ô±ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½
 	public boolean AdminUpdate(AdminBean admin) {
 		String sql = "UPDATE admin SET admin_pwd="+admin.getAdmin_pwd()+",admin_email="+admin.getAdmin_email()+",admin_level="+admin.getAdmin_level()+" WHERE admin_id="+admin.getAdmin_id()+";";
 		return executeData(sql);
 	}
 	
-	// ²éÑ¯Ö¸¶¨ID¹ÜÀíÔ±µÄ¸öÈËĞÅÏ¢
+	// ï¿½ï¿½Ñ¯Ö¸ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public AdminBean AdminInfo(int admin_id) {
 		String sql = "SELECT * FROM admin WHERE admin_id="+admin_id+";";
 		AdminBean admin_temp = new AdminBean();
@@ -75,7 +75,7 @@ public class AdminDao extends MysqlDB {
 		return admin_temp;
 	}
 	
-	// ²éÑ¯ËùÓĞ¹ÜÀíÔ±
+	// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ğ¹ï¿½ï¿½ï¿½Ô±
 	public ArrayList AdminAll() {
 		String sql = "SELECT * FROM Admin;";
 		

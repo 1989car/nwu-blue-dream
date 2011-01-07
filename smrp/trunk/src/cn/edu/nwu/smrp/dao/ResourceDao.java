@@ -3,10 +3,10 @@ package cn.edu.nwu.smrp.dao;
 import java.util.ArrayList;
 
 import cn.edu.nwu.smrp.beans.ResourceBean;
-import cn.edu.nwu.smrp.db.mysql.MysqlDB;
+import cn.edu.nwu.smrp.db.MysqlDB;
 
 public class ResourceDao extends MysqlDB{
-	// Ìí¼Ó×ÊÔ´
+	// ï¿½ï¿½ï¿½ï¿½ï¿½Ô´
 	public boolean ResourceAdd(ResourceBean resource) {
 		String sql =
 			"INSERT INTO Resource(resource_name,resource_object,resource_phase,resource_type,resource_tag,resource_describe,resource_intime,resource_downtimes,resource_owner) " +
@@ -33,7 +33,7 @@ public class ResourceDao extends MysqlDB{
 		return executeData(sql);
 	}
 
-	// É¾³ý×ÊÔ´
+	// É¾ï¿½ï¿½ï¿½ï¿½Ô´
 	public boolean resourceDelete(int resource_id) {
 		String sql = "DELETE FROM resource WHERE resource_id=" + resource_id + ";";
 
@@ -42,7 +42,7 @@ public class ResourceDao extends MysqlDB{
 	
 	
 	
-	// ×ÊÔ´¸üÐÂ
+	// ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½
 	public boolean resourceUpdate(ResourceBean resource) {
 		String sql = "UPDATE resource " +
 				"SET resource_name="+resource.getResource_name()+",resource_object="+resource.getResource_object()+",resource_phase="+resource.getResource_phase()+",resource_type="+resource.getResource_type()+",resource_tag="+resource.getResource_tag()+",resource_describe="+resource.getResource_describe()+",resource_intime="+resource.getResource_intime()+",resource_downtimes="+resource.getResource_downtimes()+",resource_owner="+resource.getResource_owner()+"" 
@@ -51,7 +51,7 @@ public class ResourceDao extends MysqlDB{
 		return executeData(sql);
 	}
 	
-	// ²éÑ¯Ö¸¶¨ID¹ÜÀíÔ±µÄ¸öÈËÐÅÏ¢
+	// ï¿½ï¿½Ñ¯Ö¸ï¿½ï¿½IDï¿½ï¿½ï¿½ï¿½Ô±ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	public ResourceBean resourceInfo(int resource_id) {
 		String sql = "SELECT * FROM resource WHERE resource_id="+resource_id+";";
 		ResourceBean resource_temp = new ResourceBean();
@@ -78,7 +78,7 @@ public class ResourceDao extends MysqlDB{
 		return resource_temp;
 	}
 	
-	// ²éÑ¯ËùÓÐ¹ÜÀíÔ±
+	// ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½ï¿½Ô±
 	public ArrayList resourceAll() {
 		String sql = "SELECT * FROM resource;";
 		
