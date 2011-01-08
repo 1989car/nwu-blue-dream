@@ -2,6 +2,7 @@ package cn.edu.nwu.smrp.db;
 
 import java.io.FileNotFoundException;
 
+import com.sleepycat.db.Environment;
 import com.sleepycat.dbxml.XmlContainer;
 import com.sleepycat.dbxml.XmlException;
 import com.sleepycat.dbxml.XmlManager;
@@ -16,12 +17,27 @@ public class DBXML {
 	XmlContainer m_cont = null;
 	XmlUpdateContext m_uc = null;
 	XmlQueryContext m_qc = null;
+	Environment myEnv = null;
+
+	private void cleanup() {
+		try {
+		    if (m_cont != null)
+			m_cont.delete();
+		    if (m_mgr != null)
+			m_mgr.delete();
+		} catch (Exception e) {
+		    // ignore exceptions in cleanup
+		}
+	    }
 
 	 public void create(String strDbName) throws XmlException, FileNotFoundException {
 	       m_mgr = new XmlManager();
-	        if (m_mgr.existsContainer(strDbName) != 0) {
+	        if (m_mgr.existsContainer(strDbName) != 0)
+	        {
 	        m_cont = m_mgr.openContainer(strDbName);
-	        } else {
+	        }
+	        else
+	        {
 	        m_cont = m_mgr.createContainer(strDbName);
 	        }
 	        m_uc = m_mgr.createUpdateContext();
@@ -46,10 +62,10 @@ public class DBXML {
 	        XmlResults res = expr.execute(m_qc);
 
 	        XmlValue value = new XmlValue();
-	        System.out.print("Result: ");
+
 	        while ((value = res.next()) != null) {
-	        System.out.println("\t" + value.asString());
-	        value.delete();
+
+
 	        }
 	        res.delete();
 	        expr.delete();
@@ -65,75 +81,84 @@ public class DBXML {
 	    }
 
 	 public boolean isEmpty(String strQuery, String strName) throws XmlException {
-	       m_qc.setVariableValue("name", new XmlValue(strName));
+		m_qc = m_mgr.createQueryContext();
+	       m_qc.setVariableValue("value", new XmlValue(strName));
 	       XmlQueryExpression expr = m_mgr.prepare(strQuery, m_qc);
 	        XmlResults res = expr.execute(m_qc);
 
 	        XmlValue value = new XmlValue();
-	        System.out.print("Result: ");
-	        if ((value = res.next()) != null) {
-	        value.delete();
+
+	        if ((value = res.next()) != null)
+	        {
+
 	        res.delete();
 	           expr.delete();
+	           System.out.println("not empty");
 	        return false;
 	        }
 	        res.delete();
 	        expr.delete();
+	        System.out.println("empty");
 	        return true;
 	    }
 
+
+
+
+
+
+
+
+  static final private String m_StrDbName = "phone.dbxml";
+  static final private String m_StrName1 = "phone1";
+  static final private String m_StrXml1 = "<phonebook><name><first>Tom</first><last>Jones</last></name><phone type=\"home\">420-203-2033</phone></phonebook>";
+  static final private String m_StrName2 = "phone2";
+  static final private String m_StrXml2 = "<phonebook><name><first>Lisa</first><last>Smith</last></name> <phone type=\"home\">420-992-4801</phone><phone type=\"cell\">390-812-4292</phone></phonebook>";
+  static final private String m_StrName3 = "phone3";
+  static final private String m_StrXml3 = "<phonebook><name><first>Tom</first><last>Jones</last></name><phone type=\"home\">420-203-2033</phone></phonebook>";
+
+  static final private String m_strquery = "collection('phone.dbxml')/phonebook";
+  static final private String m_strquery1 = "collection('phone.dbxml')/phonebook/name[fisrt=$value]";
+
+
+
+  public static void main(String[] args) {
+      //  TODO 自动生成方法存根
+     DBXML dbxml = new DBXML();
+     try {
+         dbxml.create(m_StrDbName);
+
+         if (dbxml.isEmpty(m_strquery1, "Tom") ) {
+            dbxml.addXmlData(m_StrName1, m_StrXml1);
+            dbxml.queryXmlData(m_strquery);
+         }
+         if (dbxml.isEmpty(m_strquery1, "Lisa")) {
+            dbxml.addXmlData(m_StrName2, m_StrXml2);
+            dbxml.queryXmlData(m_strquery);
+         }
+         if (dbxml.isEmpty(m_strquery1, "Tom")) {
+            dbxml.addXmlData(m_StrName3, m_StrXml3);
+            dbxml.queryXmlData(m_strquery);
+         } else {
+            System.out.println("已经存在");
+         }
+         dbxml.deleteXmlData(m_StrName2);
+
+         dbxml.queryXmlData(m_strquery);
+         dbxml.editXmlData(m_StrName1, m_StrXml2);
+         dbxml.queryXmlData(m_strquery);
+
+         dbxml.close();
+     } catch (XmlException e) {
+            //TODO 自动生成 catch 块
+         System.out.print("XmlException");
+         e.printStackTrace();
+     } catch (FileNotFoundException e) {
+           // TODO 自动生成 catch 块
+         System.out.print("未找到数据文件");
+     }
+     finally {
+ 	    dbxml.cleanup();
+ 	}
+  }
 }
-
-
-
-/*
-
-
-static final private String m_StrDbName = "phone.dbxml";
-static final private String m_StrName1 = "phone1";
-static final private String m_StrXml1 = "<phonebook><name><first>Tom</first><last>Jones</last></name><phone type=\"home\">420-203-2033</phone></phonebook>";
-static final private String m_StrName2 = "phone2";
-static final private String m_StrXml2 = "<phonebook><name><first>Lisa</first><last>Smith</last></name> <phone type=\"home\">420-992-4801</phone><phone type=\"cell\">390-812-4292</phone></phonebook>";
-static final private String m_StrName3 = "phone3";
-static final private String m_StrXml3 = "<phonebook><name><first>Tom</first><last>Jones</last></name><phone type=\"home\">420-203-2033</phone></phonebook>";
-
-static final private String m_strquery = "collection('phone.dbxml')/phonebook";
-static final private String m_strquery1 = "collection('phone.dbxml')/phonebook[name/first=$name]";
-
-
-
-public static void main(String[] args) {
-   // TODO 自动生成方法存根
-   DbXmlTest dbxml = new DBXML();
-   try {
-       dbxml.create(m_StrDbName);
-
-       if (dbxml.isEmpty(m_strquery1, "Tom")) {
-          dbxml.addXmlData(m_StrName1, m_StrXml1);
-          dbxml.queryXmlData(m_strquery);
-       }
-       if (dbxml.isEmpty(m_strquery1, "Lisa")) {
-          dbxml.addXmlData(m_StrName2, m_StrXml2);
-          dbxml.queryXmlData(m_strquery);
-       }
-       if (dbxml.isEmpty(m_strquery1, "Tom")) {
-          dbxml.addXmlData(m_StrName3, m_StrXml3);
-          dbxml.queryXmlData(m_strquery);
-       } else {
-          System.out.println("已经存在");
-       }
-       dbxml.deleteXmlData(m_StrName2);
-       dbxml.queryXmlData(m_strquery);
-       dbxml.editXmlData(m_StrName1, m_StrXml2);
-       dbxml.queryXmlData(m_strquery);
-
-       dbxml.close();
-   } catch (XmlException e) {
-       // TODO 自动生成 catch 块
-       System.out.print("XmlException");
-       e.printStackTrace();
-   } catch (FileNotFoundException e) {
-       // TODO 自动生成 catch 块
-       System.out.print("未找到数据文件");
-   }
-}*/
