@@ -1,0 +1,159 @@
+@charset "utf-8";
+
+* {
+	word-break: break-all;
+}  /*在IE中实行强制换行*/
+body {
+	color: #333333;
+	text-align: center;
+	font: 12px Arial, Helvetica, sans-serif;
+}
+
+#body {
+	margin: 0 auto;
+}
+
+
+.sapload {
+	padding: 1em;
+	width:750px;
+	margin-top: 20px;
+	margin-right: auto;
+	margin-bottom: 40px;
+	margin-left: auto;
+	background-color: #fff;
+	
+}
+#sapload{width: 490px;overflow:hidden;height:35px;}
+.ct {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #fff;
+	margin-top: 20px;
+	text-align:center;
+	padding: 1em;
+	width: 620px;
+	margin:0 auto;
+}
+
+/*主导航*/
+#menu {
+	margin: 0 auto;
+	line-height: 25px;
+	background: #3B5998 /*#EDF4F7*/   url(../image/menu_b2.gif) repeat-x
+		bottom;
+	width: 958px;
+	overflow: hidden;
+	border-left: 1px solid #B2CDDA;
+	border-right: 1px solid #B2CDDA;
+}
+
+#menu ul {
+	list-style: none;
+	margin: 0px;
+	padding: 0;
+	overflow: hidden;
+}
+
+#menu li {
+	float: left;
+	height: 20px;
+	margin: 0 0 0 15px;
+	padding: 0;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+#menu li a {
+	color: #0C688E !important;
+}
+
+#menu dl {
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 483px;
+	height: 20px;
+	overflow: hidden;
+}
+
+#menu dt {
+	float: left;
+	padding-left: 10px;
+	white-space: nowrap;
+}
+
+#menu dt a {
+	color: #666666 !important;
+}
+
+#menu dd {
+	float: left;
+	margin-left: 7px;
+	white-space: nowrap;
+}
+
+#menu dd a {
+	color: #0C688E !important;
+}
+
+#menu_a2 {
+	margin: 0 auto;
+	background: url(../image/menu_a2.gif);
+	width: 960px;
+	height: 8px;
+	font-size: 0px;
+}
+
+#menu_a1 {
+	float: left;
+	background: url(../image/menu_a1.gif);
+	width: 7px;
+	height: 8px;
+}
+
+#menu_a3 {
+	float: right;
+	background: url(../image/menu_a3.gif);
+	width: 7px;
+	height: 8px;
+}
+
+#menu_c2 {
+	margin: 0 auto;
+	background: url(../image/menu_c2.gif);
+	width: 960px;
+	height: 8px;
+	font-size: 0px;
+}
+
+#menu_c1 {
+	float: left;
+	background: url(../image/menu_c1.gif);
+	width: 7px;
+	height: 8px;
+}
+
+#menu_c3 {
+	float: right;
+	background: url(../image/menu_c3.gif);
+	width: 7px;
+	height: 8px;
+}
+
+/*低栏*/
+#bottom {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	border-width: 1px 0 2px 0;
+	border-style: solid;
+	border-color: #E0E0E0;
+	background: #FFF;
+	padding: 10px 0;
+	clear: both;
+	color: #999;
+	text-align: center;
+	line-height: 22px;
+	margin-bottom: 50px;
+}

@@ -1,9 +1,17 @@
 <?php
-header("Content-type:text/html; charset=utf-8");
-require SITE_ROOT.'/common/common.inc.php';
 
-$var = 'abc';
-$arr = array(1, 2, 3);
+require("./source/include/common.inc.php");
 
-include template('index');
+$template_path = $config[template][path];
+
+if($config[template][cache]==1)
+cache_page($config[template][cache_time]);
+
+//echo WEBROOT;
+$title = "Hello World";
+$str = 'Hello world!';
+$arr = array(1, 2, 3,4,5,6,7);
+
+
+include template('test');
 ?>

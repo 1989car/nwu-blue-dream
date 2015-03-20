@@ -1,0 +1,12 @@
+{subtemplate header}
+<h1>{$str}</h1>
+{lang title}
+<ul>
+	{loop $arr $val}
+	<li>{$val}</li>
+	{/loop}
+</ul>
+{eval $str = 'Yes'}
+<h1>{$str}</h1>
+<h3>{if $str == 'Yes'}{echo 'right'}{else}{echo 'wrong'}{/if}
+<h3>{subtemplate footer}

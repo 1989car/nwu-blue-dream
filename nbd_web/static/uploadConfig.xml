@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<saploadConfig>
+	<button fontsize="12" color="#000000">
+		<sa_browse src="static/images/upload/buttons.png" x="310" y="5" width="85" height="25"></sa_browse>
+		<sa_upload src="static/images/upload/buttons.png" x="400" y="5" width="85" height="25"></sa_upload>
+		<sa_msg src="static/images/upload/msg.png" x="5" y="5" width="300" height="25"></sa_msg>
+		<sa_scale color="#0066ccC" alpha="0.3"></sa_scale>
+	</button>
+	<config>
+		<background src="static/images/upload/background.png" x="0" y="0"></background>
+		<saploadmode notes="上传模式：simple(简约模式)">simple</saploadmode>
+		<securityType notes="是否开启安全文件类型检测">false</securityType>
+		<MaxNumber notes="最大上传文件个数。">10</MaxNumber>
+		<MaxSize notes="单次上传文件的最大值，如200K、8M等.大写">2000M</MaxSize>
+		<filesTypes notes="允许上传的文件类型，请用;号隔开只写后缀名即可。*为不限制">*</filesTypes>
+		<myArgs notes="一些自定义的变量，如sessionId等。">
+			<item name="other">asyouwish</item>
+		</myArgs>
+		<webServiceUrl notes="服务端处理上传脚本的路径，请写绝对路径。跨域问题请自行解决。">http://localhost/nbd_web/attch.php</webServiceUrl>
+		<formName notes="表单名称，相当于html表单的name属性。默认为；Filedata">Filedata</formName>
+		<callFunction>
+			<StartFunction notes="上传完毕后通知页面函数">workStart</StartFunction>
+			<ProgressFunction notes="单次上传进度">ProgressFunction</ProgressFunction>
+			<AllProgressFunction notes="总上传进度">AllProgressFunction</AllProgressFunction>
+			<FeedBackFunction notes="每次上传操作获得服务端的返回信息的通知页面函数">FeedBackFunction</FeedBackFunction>
+			<LastFeedBackFunction notes="最后一次上传操作获得服务端的返回信息的通知页面函数">LastFeedBackFunction</LastFeedBackFunction>
+			<EndFunction notes="上传完毕后通知页面函数">workEnd</EndFunction>
+		</callFunction>
+		<rightHandMenu notes="右键自定义菜单项">
+			<m u="http://www.yousite.com">右键自定义菜单项1</m>
+			<m u="http://www.yousite.com">右键自定义菜单项2</m>
+			<m u="http://www.yousite.com">右键自定义菜单项3</m>
+		</rightHandMenu>
+	</config>
+	<lang notes="语言包">
+		<msg notes="浏览按钮">请选择文件</msg>
+		<msg notes="浏览按钮">重新选择</msg>
+		<msg notes="上传按钮">开始上传</msg>
+		<msg notes="上传按钮">终止上传</msg>
+		<msg notes="提示语01">请选文件先 ^^</msg>
+		<msg notes="提示语02">已选#个文件,#个文件可以上传。【点此附加】</msg>
+		<msg notes="提示语03">正在上传第#个文件,#</msg>
+		<msg notes="提示语04">#可以上传</msg>
+		<msg notes="提示语05">#过大或类型有误,无法上传!</msg>
+		<msg notes="提示语06">#文件类型错误,无法上传!</msg>
+		<msg notes="提示语07">#个文件上传成功!</msg>
+		<msg notes="提示语08">#上传成功!</msg>
+		<msg notes="提示语09">还可以继续再上传#个文件!</msg>
+		<msg notes="提示语10">正在检查文件是否允许上传</msg>
+		<msg notes="提示语11">未授权的跨域访问</msg>
+		<msg notes="提示语12">很神奇的IO错误！(也许是404页面未找到)</msg>
+	</lang>
+	<typelegal>
+		<jpg>65496</jpg>
+		<png>35152</png>
+		<gif>18249</gif>
+		<rar>21089</rar>
+		<zip>20555</zip>
+	</typelegal>
+</saploadConfig>
